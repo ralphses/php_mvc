@@ -1,0 +1,16 @@
+{
+    "name": "ralphses/php_mvc",
+    "autoload": {
+        "psr-4": {
+            "Ralphses\\PhpMvc\\": "src/",
+             "src\\": "./src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ralphses",
+            "email": "eze.raph@gmail.com"
+        }
+    ],
+    "require": {}
+}
