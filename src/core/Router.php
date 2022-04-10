@@ -4,9 +4,10 @@ namespace src\core;
 
 class Router {
 
-    protected array $routes = [];
     public Request $request;
     public Response $response;
+
+    protected array $routes = [];
 
     public function __construct(Request $request, Response $response) {
 
@@ -25,7 +26,7 @@ class Router {
     public function resolve()  {
 
         $path = $this->request->getPath(); //Get the current path
-        $method = $this->request->method(); //Get the current method
+        $method = $this->request->method(); //Get the current method whether post or get
         $callback = $this->routes[$method][$path] ?? false; //Get the function to be executed for the given method and for the given path
 
         //Checks if the callback for the requested path and method is defined

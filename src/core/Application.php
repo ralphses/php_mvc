@@ -6,12 +6,12 @@ use src\controllers\Controller;
 
 class Application {
 
-    public static string $ROOT_PATH;
+    public static string $ROOT_PATH;    
+    public static Application $app;
 
     public Router $router;
     public Request $request;
     public Response $response;
-    public static Application $app;
     public Controller $controller;
 
     public function __construct($rootPath) {
