@@ -21,6 +21,8 @@
             word-spacing: 10px;
         }
     </style>
+
+<link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
 </head>
 <body>
 

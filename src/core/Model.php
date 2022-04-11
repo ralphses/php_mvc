@@ -14,6 +14,7 @@ abstract class Model {
     public array $errors = [];
 
     abstract public function rules(): array;
+    static abstract public function fieldLabels() : array;
 
     public function loadData($data) {
 
@@ -43,6 +44,18 @@ abstract class Model {
         ];
     }
 
+    public function hasErrors($attribute) {
+        // echo $this->errorMessages()[$this->rules()[$attribute][0]];
+        // exit;
+
+        if($this->errorMessages()[$this->rules()[$attribute][0]]) {
+            // echo $this->errorMessages()[$this->rules()[$attribute][0]];
+            return $this->errorMessages()[$this->rules()[$attribute][0]];;
+        }
+        return 'is-invalid';
+       
+    }
+
     //         'name' => [self::RULE_REQUIRED],
     //         'email' => [self::RULE_REQUIRED, self::RULE_EMAIL],
     //         'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 24]],
@@ -58,9 +71,8 @@ abstract class Model {
                     $ruleName = $rule[0]; //If an array, pick the item at index 0 which is the rule name
                 }
 
-                /*
-                Make proper validations for each of the rules
-                */
+                /* Make proper validations for each of the rules */
+                
                 if($ruleName === self::RULE_REQUIRED and !$value) {
                     $this->addError($attribute, self::RULE_REQUIRED);
                 }

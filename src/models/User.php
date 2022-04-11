@@ -6,10 +6,10 @@ use src\core\Model;
 
 class User extends Model{
 
-    public string $name;
-    public string $email;
-    public string $password;
-    public string $confirm_password;
+    public string $name = '';
+    public string $email = '';
+    public string $password = '';
+    public string $confirm_password = '';
 
     public function rules() : array {
 
@@ -19,6 +19,16 @@ class User extends Model{
         'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 24]],
         'confirm_password' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']]
     ];
+    }
+    
+
+    public static function fieldLabels() : array {
+        return [
+            'name' => 'Enter your fullname',
+            'email' => 'Email address',
+            'password' => 'Create new password',
+            'confirm_password' => 'Confirm your new password'
+        ];
     }
 
 
